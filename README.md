@@ -18,5 +18,6 @@ about them and how a business revolving around them works.
 - As a user, I want to be able to add a car to my dealership or remove an existing one.
 - As a user, I want to be able to mark a car as sold in my dealership.
 - As a user, I want to be able to view a list of cars in my dealership and a list of cars that have been sold.
+- As a user, I want to be able to select a car in my dealership and view its features.
 - As a user, I want to be able to view the number of cars in my dealership and the number of cars that have been sold.
 
