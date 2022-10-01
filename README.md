@@ -1,10 +1,16 @@
-# My Personal Project
+# My Personal Project: *Automobile Dealership Manager*
+## What will the project do?
+This application will serve as a virtual multi-brand automobile dealership which keeps track of vehicles in a 
+dealership. It lets you add a vehicle to your dealership and add information about its price, features, model, mileage,
+usage, body type, color, etc. You can view a listing of the added vehicles and see which of them have been sold. 
+Another possible feature could be displaying a roster of vehicles using pictures or objects with specifications
+depending on the type of car. 
 
-## A subtitle
+## Who will use it?
+This application could be useful to automobile dealerships or anyone in general who has interest in cars, or someone 
+who wants to start or manage a similar business. 
 
-A *bulleted* list:
-- item 1
-- item 2
-- item 3
+## Why is this project of interest to you?
+I have always been fond of cars and how they function. I think this project would be a great opportunity to learn more 
+about them and how a business revolving around them works. 
 
-An example of text with **bold** and *italic* fonts.  
