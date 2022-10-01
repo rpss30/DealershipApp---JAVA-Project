@@ -14,3 +14,9 @@ who wants to start or manage a similar business.
 I have always been fond of cars and how they function. I think this project would be a great opportunity to learn more 
 about them and how a business revolving around them works. 
 
+## User Stories
+- As a user, I want to be able to add a car to my dealership or remove an existing one.
+- As a user, I want to be able to mark a car as sold in my dealership.
+- As a user, I want to be able to view a list of cars in my dealership and a list of cars that have been sold.
+- As a user, I want to be able to view the number of cars in my dealership and the number of cars that have been sold.
+
