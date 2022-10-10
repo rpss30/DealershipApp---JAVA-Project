@@ -1,27 +1,23 @@
 package model;
 
-// Represents a car having a model name, fuelType and whether sold or not
+// Represents a car with given features and sale status
 public class Car {
 
-    private boolean sold;
-    private String companyName;
-    private String model;
-    private int make;
-
-    // REQUIRES: fuelTYpe = "petrol" | "diesel" | "electric"
-    // EFFECTS: constructs a car object with given companyName, model, fuelType and sold == false
-    public Car(String companyName, String model, String fuelType) {
+    // REQUIRES: fuelTYpe == "petrol" | "diesel" | "electric"
+    // EFFECTS: constructs a car with given model, make, fuelType, mpg
+    // which has not been sold yet
+    public Car(String model, int make, String fuelType, double mpg) {
         // stub
-    }
-
-    // EFFECTS: returns the name of the company the car belongs to
-    public String getCompanyName() {
-        return null; // stub
     }
 
     // EFFECTS: returns the model of car
     public String getModel() {
         return null; // stub
+    }
+
+    // EFFECTS: returns make of the car
+    public int getMake() {
+        return 0;
     }
 
     // EFFECTS: returns the make of car
@@ -34,8 +30,13 @@ public class Car {
         return false; // stub
     }
 
+    // returns mpg of the car
+    public double getMpg() {
+        return 0;
+    }
+
     // MODIFIES: this
-    // EFFECTS: mark the car as sold by setting isSold = true
+    // EFFECTS: marks the car as sold
     public void sellCar() {
         // stub
     }
