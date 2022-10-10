@@ -13,13 +13,13 @@ public class Dealership {
 
     // MODIFIES: this
     // EFFECTS: adds a car to the dealership
-    public void addCar() {
+    public void addCar(Car car) {
         // stub
     }
 
     // MODIFIES: this
     // EFFECTS: removes a car from the dealership
-    public void removeCar() {
+    public void removeCar(Car car) {
         // stub
     }
 
