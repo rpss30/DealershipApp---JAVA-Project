@@ -9,7 +9,8 @@ public class Car {
     private double mpg;
     private boolean sold;
 
-    // REQUIRES: fuelTYpe == "petrol" | "diesel" | "electric"
+    // REQUIRES: fuelTYpe == "petrol" | "diesel" | "electric", model.length >= 0,
+    //           2000 <= make <= 2022 and 10.0 <= mpg <= 50.0
     // EFFECTS: constructs a car with given model, make, fuelType, mpg
     // which has not been sold yet
     public Car(String model, int make, String fuelType, double mpg) {

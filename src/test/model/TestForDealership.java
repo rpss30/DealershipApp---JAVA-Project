@@ -18,7 +18,7 @@ public class TestForDealership {
 
     @Test
     public void testForConstructor() {
-        assertEquals("honda", myShop.getName());
+        assertEquals("honda", myShop.getBrand());
         assertEquals(0,myShop.numCars());
     }
 
