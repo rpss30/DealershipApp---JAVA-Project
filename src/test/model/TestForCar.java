@@ -19,6 +19,7 @@ class TestForCar {
         assertEquals(2015, myCar.getMake());
         assertEquals("petrol", myCar.getFuelType());
         assertEquals(15.5, myCar.getMpg());
+        assertEquals(0,myCar.getId());
         assertFalse(myCar.isSold());
     }
 

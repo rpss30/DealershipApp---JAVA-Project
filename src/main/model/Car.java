@@ -2,23 +2,24 @@ package model;
 
 // Represents a car with given features and sale status
 public class Car {
-
     private String model;
     private int make;
     private String fuelType;
     private double mpg;
     private boolean sold;
+    private int id;
 
     // REQUIRES: fuelTYpe == "petrol" | "diesel" | "electric", model.length >= 0,
     //           2000 <= make <= 2022 and 10.0 <= mpg <= 50.0
     // EFFECTS: constructs a car with given model, make, fuelType, mpg
-    // which has not been sold yet
+    // which has not been sold yet and id = 0
     public Car(String model, int make, String fuelType, double mpg) {
         this.model = model;
         this.make = make;
         this.fuelType = fuelType;
         this.mpg = mpg;
         sold = false;
+        id = 0;
     }
 
     // EFFECTS: returns the model of car
@@ -50,5 +51,16 @@ public class Car {
     // EFFECTS: marks the car as sold
     public void sellCar() {
         sold = true;
+    }
+
+    // MODIFIES: this
+    // EFFECTS: sets id of car to given idNum
+    public void setId(int idNum) {
+        id = idNum;
+    }
+
+    // EFFECTS: returns id number of car
+    public int getId() {
+        return id;
     }
 }

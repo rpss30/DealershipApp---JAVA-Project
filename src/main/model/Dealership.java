@@ -5,7 +5,6 @@ import java.util.List;
 
 // Represents a dealership consisting of cars that are either sold or not
 public class Dealership {
-
     private ArrayList<Car> cars;
     private String brand;
 
@@ -16,9 +15,11 @@ public class Dealership {
     }
 
     // MODIFIES: this
-    // EFFECTS: adds a car to the dealership
+    // EFFECTS: adds a car to the dealership and sets its id number
     public void addCar(Car car) {
         cars.add(car);
+        int idNum = cars.indexOf(car) + 1;
+        car.setId(idNum);
     }
 
     // MODIFIES: this
