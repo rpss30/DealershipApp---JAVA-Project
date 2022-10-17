@@ -28,4 +28,11 @@ class TestForCar {
         myCar.sellCar();
         assertTrue(myCar.isSold());
     }
+
+    @Test
+    public void testForSetId() {
+        assertEquals(0, myCar.getId());
+        myCar.setId(1);
+        assertEquals(1, myCar.getId());
+    }
 }

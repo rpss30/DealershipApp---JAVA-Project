@@ -34,7 +34,7 @@ public class Dealership {
     }
 
     // EFFECTS: returns a list of all the sold cars
-    public List<Car> allSoldCars() {
+    public List<Car> soldCars() {
         List<Car> soldCars = new ArrayList<>();
         for (Car car : cars) {
             if (car.isSold()) {
@@ -46,11 +46,16 @@ public class Dealership {
 
     // EFFECTS: returns the total number of sold cars in the dealership
     public int numSoldCars() {
-        return allSoldCars().size();
+        return soldCars().size();
     }
 
     // EFFECTS: returns the name of dealership
     public String getBrand() {
         return brand;
+    }
+
+    // EFFECTS: returns a list of all the cars
+    public List<Car> allCars() {
+        return cars;
     }
 }
