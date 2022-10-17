@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-// Represents a dealership consisting of cars that are either sold or not
+// Represents a dealership with a brand name consisting of cars that are either sold or not
 public class Dealership {
     private ArrayList<Car> cars;
     private String brand;

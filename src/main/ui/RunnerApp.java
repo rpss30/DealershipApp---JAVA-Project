@@ -5,7 +5,7 @@ import model.Car;
 
 import java.util.Scanner;
 
-// Dealership application
+// Runs the dealership as an application
 public class RunnerApp {
     private static final String ERROR_MESSAGE = "Error! Please try again:";
     private final Dealership dealership;
@@ -179,13 +179,16 @@ public class RunnerApp {
     // EFFECTS: prompts user to select a car and provide further
     //          options with getInfoOrSell
     public void selectCar() {
-        System.out.println("Enter ID number to select car:");
+        System.out.println("Enter ID number to select car (ID >= 1):");
         int userInput = Integer.parseInt(input.next());
         for (Car car : dealership.allCars()) {
             if (userInput == car.getId()) {
                 pickedCar = car;
                 System.out.println(pickedCar.getModel() + ", " + pickedCar.getMake() + ", ID - " + pickedCar.getId());
                 break;
+            } else {
+                System.out.println("There are no cars with the entered ID in the dealership");
+                afterSelectCar();
             }
         }
         actionOnSelectedCar();
@@ -261,7 +264,7 @@ public class RunnerApp {
         int make = Integer.parseInt(input.next());
         if (make < 2000 || make > 2022) {
             System.out.println(ERROR_MESSAGE);
-            enterMake();
+            mainMenu();
         }
         return make;
     }
@@ -272,7 +275,7 @@ public class RunnerApp {
         String fuel = input.next();
         if (!(fuel.equals("petrol") || fuel.equals("diesel") || fuel.equals("electric"))) {
             System.out.println(ERROR_MESSAGE);
-            enterFuelType();
+            mainMenu();
         }
         return fuel;
     }
@@ -283,7 +286,7 @@ public class RunnerApp {
         double mpg = Double.parseDouble(input.next());
         if (mpg < 10.0 || mpg > 50.0) {
             System.out.println(ERROR_MESSAGE);
-            enterMpg();
+            mainMenu();
         }
         return mpg;
     }
