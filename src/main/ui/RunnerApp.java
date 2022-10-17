@@ -3,7 +3,9 @@ package ui;
 import model.Dealership;
 import model.Car;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.List;
 
 // Runs the dealership as an application
 public class RunnerApp {
@@ -147,7 +149,7 @@ public class RunnerApp {
                 System.out.println("The dealership has " + dealership.numCars() + " car(s) in total");
                 loop = false;
             } else if (userInput.equals("sold")) {
-                System.out.println("The dealership has sold " + dealership.numCars() + " car(s) in total");
+                System.out.println("The dealership has sold " + dealership.numSoldCars() + " car(s) in total");
                 loop = false;
             } else {
                 System.out.println(ERROR_MESSAGE);
@@ -177,21 +179,25 @@ public class RunnerApp {
     }
 
     // EFFECTS: prompts user to select a car and provide further
-    //          options with getInfoOrSell
+    //          options with actionOnSelectedCar
     public void selectCar() {
         System.out.println("Enter ID number to select car (ID >= 1):");
         int userInput = Integer.parseInt(input.next());
+        List<Car> carList = new ArrayList<>();
         for (Car car : dealership.allCars()) {
             if (userInput == car.getId()) {
                 pickedCar = car;
-                System.out.println(pickedCar.getModel() + ", " + pickedCar.getMake() + ", ID - " + pickedCar.getId());
-            } else {
-                System.out.println("There are no cars with the entered ID in the dealership");
-                afterSelectCar();
+                carList.add(pickedCar);
             }
         }
-        loop = true;
-        actionOnSelectedCar();
+        if (carList.isEmpty()) {
+            System.out.println("There are no cars with the entered ID in the dealership");
+            afterSelectCar();
+        } else {
+            System.out.println(pickedCar.getModel() + ", " + pickedCar.getMake() + ", ID - " + pickedCar.getId());
+            loop = true;
+            actionOnSelectedCar();
+        }
     }
 
     // EFFECTS: prompts user to getInfo on the selected car, sell or remove it
@@ -228,7 +234,6 @@ public class RunnerApp {
         System.out.println("Enter 'return' to return to the main menu");
         String endInput = input.next();
         loop = true;
-
         while (loop) {
             if (endInput.equals("back")) {
                 selectCar();
