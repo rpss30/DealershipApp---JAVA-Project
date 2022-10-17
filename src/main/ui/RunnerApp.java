@@ -11,13 +11,11 @@ public class RunnerApp {
     private final Dealership dealership;
     private Scanner input;
     private Car pickedCar;
-    private String model;
-    private int make;
-    private String fuelType;
-    private double mpg;
+    private boolean loop;
 
     // EFFECTS: runs the dealership application
     public RunnerApp() {
+        loop = true;
         welcomeMessage();
         dealership = new Dealership(chooseBrand());
         System.out.println("Congratulations! You have a new " + dealership.getBrand() + " dealership.");
@@ -64,7 +62,7 @@ public class RunnerApp {
             System.out.println("Goodbye!");
         } else {
             System.out.println(ERROR_MESSAGE);
-            processInput();
+            mainMenu();
         }
     }
 
@@ -77,13 +75,13 @@ public class RunnerApp {
         getInfo(newCar);
         System.out.println("Enter 'return' to return to the main menu\nEnter 'another' to add another car");
         String endInput = input.next();
-        while (true) {
+        while (loop) {
             if (endInput.equals("another")) {
                 addOneCar();
-                break;
+                loop = false;
             } else if (endInput.equals("return")) {
                 mainMenu();
-                break;
+                loop = false;
             } else {
                 System.out.println(ERROR_MESSAGE);
                 endInput = input.next();
@@ -123,13 +121,14 @@ public class RunnerApp {
     public void afterViewCars() {
         System.out.println("Enter 'back' to go back\nEnter 'return' to return to the main menu");
         String endInput = input.next();
-        while (true) {
+        loop = true;
+        while (loop) {
             if (endInput.equals("back")) {
                 viewCars();
-                break;
+                loop = false;
             } else if (endInput.equals("return")) {
                 mainMenu();
-                break;
+                loop = false;
             } else {
                 System.out.println(ERROR_MESSAGE);
                 endInput = input.next();
@@ -142,13 +141,14 @@ public class RunnerApp {
     public void numberOfCars() {
         System.out.println("Enter 'all' to view the count of all cars\nEnter 'sold' to view the count of sold cars");
         String userInput = input.next();
-        while (true) {
+        loop = true;
+        while (loop) {
             if (userInput.equals("all")) {
-                System.out.println("The dealership has " + dealership.numCars() + " cars in total");
-                break;
+                System.out.println("The dealership has " + dealership.numCars() + " car(s) in total");
+                loop = false;
             } else if (userInput.equals("sold")) {
-                System.out.println("The dealership has sold " + dealership.numCars() + " cars in total");
-                break;
+                System.out.println("The dealership has sold " + dealership.numCars() + " car(s) in total");
+                loop = false;
             } else {
                 System.out.println(ERROR_MESSAGE);
                 userInput = input.next();
@@ -159,16 +159,16 @@ public class RunnerApp {
 
     // EFFECTS: prompts user to go back to numberOfCars or return to the main menu
     public void afterCarNum() {
-        System.out.println("Enter 'back' to go back");
-        System.out.println("Enter 'return' to return to the main menu");
+        System.out.println("Enter 'back' to go back\nEnter 'return' to return to the main menu");
         String endInput = input.next();
-        while (true) {
+        loop = true;
+        while (loop) {
             if (endInput.equals("back")) {
                 numberOfCars();
-                break;
+                loop = false;
             } else if (endInput.equals("return")) {
                 mainMenu();
-                break;
+                loop = false;
             } else {
                 System.out.println(ERROR_MESSAGE);
                 endInput = input.next();
@@ -185,12 +185,12 @@ public class RunnerApp {
             if (userInput == car.getId()) {
                 pickedCar = car;
                 System.out.println(pickedCar.getModel() + ", " + pickedCar.getMake() + ", ID - " + pickedCar.getId());
-                break;
             } else {
                 System.out.println("There are no cars with the entered ID in the dealership");
                 afterSelectCar();
             }
         }
+        loop = true;
         actionOnSelectedCar();
     }
 
@@ -199,21 +199,21 @@ public class RunnerApp {
     public void actionOnSelectedCar() {
         System.out.println("Enter 'g' to get info on car\nEnter 'sell' to sell car\nEnter '-' to remove car");
         String otherUserInput = input.next();
-        while (true) {
+        while (loop) {
             if (otherUserInput.equals("g")) {
                 getInfo(pickedCar);
-                break;
+                loop = false;
             } else if (otherUserInput.equals("sell")) {
                 pickedCar.sellCar();
                 System.out.println("You have sold the following car:");
                 System.out.println(pickedCar.getModel() + ", " + pickedCar.getMake() + ", ID - " + pickedCar.getId());
                 System.out.println();
-                break;
+                loop = false;
             } else if (otherUserInput.equals("-")) {
                 System.out.println("You have removed the following car:");
                 System.out.println(pickedCar.getModel() + ", " + pickedCar.getMake() + ", ID - " + pickedCar.getId());
                 dealership.removeCar(pickedCar);
-                break;
+                loop = false;
             } else {
                 System.out.println(ERROR_MESSAGE);
                 selectCar();
@@ -227,13 +227,15 @@ public class RunnerApp {
         System.out.println("Enter 'back' to select another car");
         System.out.println("Enter 'return' to return to the main menu");
         String endInput = input.next();
-        while (true) {
+        loop = true;
+
+        while (loop) {
             if (endInput.equals("back")) {
                 selectCar();
-                break;
+                loop = false;
             } else if (endInput.equals("return")) {
                 mainMenu();
-                break;
+                loop = false;
             } else {
                 System.out.println(ERROR_MESSAGE);
                 endInput = input.next();
