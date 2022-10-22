@@ -7,7 +7,6 @@ public class Car {
     private String fuelType;
     private double mpg;
     private boolean sold;
-    private int id;
 
     // REQUIRES: fuelTYpe == "petrol" | "diesel" | "electric", model.length >= 0,
     //           2000 <= make <= 2022 and 10.0 <= mpg <= 50.0
@@ -19,7 +18,6 @@ public class Car {
         this.fuelType = fuelType;
         this.mpg = mpg;
         sold = false;
-        id = 0;
     }
 
     // EFFECTS: returns the model of car
@@ -53,14 +51,4 @@ public class Car {
         sold = true;
     }
 
-    // MODIFIES: this
-    // EFFECTS: sets id of car to given idNum
-    public void setId(int idNum) {
-        id = idNum;
-    }
-
-    // EFFECTS: returns id number of car
-    public int getId() {
-        return id;
-    }
 }

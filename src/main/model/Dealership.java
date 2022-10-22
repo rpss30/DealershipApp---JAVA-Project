@@ -18,8 +18,6 @@ public class Dealership {
     // EFFECTS: adds a car to the dealership and sets its id number
     public void addCar(Car car) {
         cars.add(car);
-        int idNum = cars.indexOf(car) + 1;
-        car.setId(idNum);
     }
 
     // MODIFIES: this
