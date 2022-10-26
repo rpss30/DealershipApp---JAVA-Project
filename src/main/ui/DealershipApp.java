@@ -125,7 +125,7 @@ public class DealershipApp {
             if (dealership.allCars().isEmpty()) {
                 System.out.println("There are no cars in the dealership");
             } else {
-                System.out.println("Index, Model, Year, MPG");
+                System.out.println("Index, Model, Year, Fuel Type");
                 for (Car car : dealership.allCars()) {
                     System.out.println(i + ". " + car.getModel() + ", " + car.getYear() + ", " + car.getFuelType());
                     i++;
@@ -303,20 +303,20 @@ public class DealershipApp {
 
     // EFFECTS: returns make for the car entered by the user
     public int enterMake() {
-        System.out.println("Enter make year (from 2000 to 2022):");
-        int make = Integer.parseInt(input.nextLine());
-        if (make < 2000 || make > 2022) {
+        System.out.println("Enter year (from 2000 to 2022):");
+        int year = Integer.parseInt(input.nextLine());
+        if (year < 2000 || year > 2022) {
             System.out.println(ERROR_MESSAGE);
             mainMenu();
         }
-        return make;
+        return year;
     }
 
     // EFFECTS: returns type of fuel for the car entered by the user
     public String enterFuelType() {
         System.out.println("Enter fuel type (petrol, diesel or electric):");
         String fuel = input.nextLine();
-        if (!(fuel.equals("petrol") || fuel.equals("diesel") || fuel.equals("electric"))) {
+        if (!fuel.equals("petrol") && !fuel.equals("diesel") && !fuel.equals("electric")) {
             System.out.println(ERROR_MESSAGE);
             mainMenu();
         }
@@ -335,7 +335,7 @@ public class DealershipApp {
         return mpg;
     }
 
-    // Method based on the supplied Workroom example for CPSC 210:
+    // Based on saveWorkRoom method in the WorkRoomApp class:
     // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     // EFFECTS: saves the dealership to file
     private void saveDealership() {
@@ -350,7 +350,7 @@ public class DealershipApp {
         }
     }
 
-    // Method based on the supplied Workroom example for CPSC 210:
+    // Based on loadWorkRoom method in the WorkRoomApp class:
     // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     // MODIFIES: this
     // EFFECTS: loads dealership from file

@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-// Based on the supplied Workroom example for CPSC 210:
+// Based on the class JsonReader in the supplied Workroom example for CPSC 210:
 // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 
 // Represents a reader that reads dealership from JSON data stored in file
@@ -68,6 +68,7 @@ public class JsonReader {
         model = model.substring(0, 1).toUpperCase() + model.substring(1);
         int year = jsonObject.getInt("year");
         String fuelType = jsonObject.getString("fuelType");
+        fuelType = fuelType.substring(0, 1).toUpperCase() + fuelType.substring(1);
         double mpg = jsonObject.getDouble("mpg");
         boolean sold = jsonObject.getBoolean("sold");
         Car car = new Car(model, year, fuelType, mpg);

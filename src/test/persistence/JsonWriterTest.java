@@ -8,7 +8,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
-// Based on the supplied Workroom example for CPSC 210:
+// Based on the test class JsonWriterTest in the supplied Workroom example for CPSC 210:
 // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 public class JsonWriterTest extends JsonTest {
     @Test
