@@ -2,37 +2,55 @@ package ui;
 
 import model.Dealership;
 import model.Car;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
-import java.util.ArrayList;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
-import java.util.List;
 
 // Runs the dealership as an application
-public class RunnerApp {
+public class DealershipApp {
+    private static final String JSON_STORE = "./data/dealership.json";
     private static final String ERROR_MESSAGE = "Error! Please try again:";
-    private final Dealership dealership;
+    private Dealership dealership;
     private Scanner input;
     private Car pickedCar;
     private boolean loop;
+    private JsonWriter writer;
+    private JsonReader reader;
 
     // EFFECTS: runs the dealership application
-    public RunnerApp() {
+    public DealershipApp() {
         loop = true;
+        writer = new JsonWriter(JSON_STORE);
+        reader = new JsonReader(JSON_STORE);
+        input = new Scanner(System.in);
+        System.out.println("Welcome to your dealership!");
         welcomeMessage();
-        dealership = new Dealership(chooseBrand());
-        System.out.println("Congratulations! You have a new " + dealership.getBrand() + " dealership.");
         mainMenu();
     }
 
     // EFFECTS: displays a welcome message to user
     public void welcomeMessage() {
-        System.out.println("Welcome to your dealership!");
-        System.out.println("Please choose a brand for your dealership:");
+        System.out.println("Please choose from the following options:\nEnter 'l' to load an existing dealership:");
+        System.out.println("Enter 'c' to start a new dealership");
+        String userInput = input.nextLine();
+        userInput = userInput.toLowerCase();
+        if (userInput.equals("l")) {
+            loadDealership();
+        } else if (userInput.equals("c")) {
+            System.out.println("Please choose a brand for your dealership:");
+            dealership = new Dealership(chooseBrand());
+            System.out.println("Congratulations! You have a new " + dealership.getBrand() + " dealership.");
+        } else {
+            System.out.println(ERROR_MESSAGE);
+            welcomeMessage();
+        }
     }
 
     // EFFECTS: returns brandName chosen by the user for the dealership
     public String chooseBrand() {
-        input = new Scanner(System.in);
         String brandName = input.nextLine();
         return brandName.toUpperCase();
     }
@@ -44,6 +62,8 @@ public class RunnerApp {
         System.out.println("Enter 'v' to view cars");
         System.out.println("Enter 'n' to find out the number of cars");
         System.out.println("Enter 's' to select a car");
+        System.out.println("Enter 'k' to save dealership");
+        System.out.println("Enter 'l' to load dealership");
         System.out.println("Enter 'q' to quit");
         processInput();
     }
@@ -60,6 +80,10 @@ public class RunnerApp {
             numberOfCars();
         } else if (userInput.equals("s")) {
             selectCar();
+        } else if (userInput.equals("k")) {
+            saveDealership();
+        } else if (userInput.equals("l")) {
+            loadDealership();
         } else if (userInput.equals("q")) {
             System.out.println("Goodbye!");
         } else {
@@ -103,7 +127,7 @@ public class RunnerApp {
             } else {
                 System.out.println("Index, Model, Year, MPG");
                 for (Car car : dealership.allCars()) {
-                    System.out.println(i + ". " + car.getModel() + ", " + car.getMake() + ", " + car.getFuelType());
+                    System.out.println(i + ". " + car.getModel() + ", " + car.getYear() + ", " + car.getFuelType());
                     i++;
                 }
             }
@@ -122,7 +146,7 @@ public class RunnerApp {
             System.out.println("There are no sold cars in the dealership");
         } else {
             for (Car car : dealership.soldCars()) {
-                System.out.println(i + ". " + car.getModel() + ", " + car.getMake() + ", " + car.getFuelType());
+                System.out.println(i + ". " + car.getModel() + ", " + car.getYear() + ", " + car.getFuelType());
                 i++;
             }
         }
@@ -191,14 +215,21 @@ public class RunnerApp {
     //          options with actionOnSelectedCar
     public void selectCar() {
         int i = 1;
-        System.out.println("Please select from the following:");
+        System.out.println("Please select from the following (<= " + dealership.numCars() + ")");
         for (Car car : dealership.allCars()) {
-            System.out.println(i + ". " + car.getModel() + ", " + car.getMake() + ", " + car.getFuelType());
+            System.out.println(i + ". " + car.getModel() + ", " + car.getYear() + ", " + car.getFuelType());
             i++;
         }
         int userInput = Integer.parseInt(input.nextLine());
-        pickedCar = dealership.allCars().get(userInput - 1);
-        actionOnSelectedCar();
+        if (userInput <= dealership.numCars()) {
+            pickedCar = dealership.allCars().get(userInput - 1);
+            System.out.println("You have selected the following car");
+            System.out.println(pickedCar.getModel() + ", " + pickedCar.getYear() + ", " + pickedCar.getFuelType());
+            actionOnSelectedCar();
+        } else {
+            System.out.println(ERROR_MESSAGE);
+            selectCar();
+        }
     }
 
     // EFFECTS: prompts user to getInfo on the selected car, sell or remove it
@@ -213,12 +244,12 @@ public class RunnerApp {
             } else if (otherUserInput.equals("sell")) {
                 pickedCar.sellCar();
                 System.out.println("You have sold the following car:");
-                System.out.println(pickedCar.getModel() + ", " + pickedCar.getMake() + ", " + pickedCar.getFuelType());
+                System.out.println(pickedCar.getModel() + ", " + pickedCar.getYear() + ", " + pickedCar.getFuelType());
                 System.out.println();
                 loop = false;
             } else if (otherUserInput.equals("-")) {
                 System.out.println("You have removed the following car:");
-                System.out.println(pickedCar.getModel() + ", " + pickedCar.getMake() + ", " + pickedCar.getFuelType());
+                System.out.println(pickedCar.getModel() + ", " + pickedCar.getYear() + ", " + pickedCar.getFuelType());
                 dealership.removeCar(pickedCar);
                 loop = false;
             } else {
@@ -252,7 +283,7 @@ public class RunnerApp {
     // EFFECTS: prints out information about the car
     public void getInfo(Car car) {
         System.out.println("Model: " + car.getModel());
-        System.out.println("Make: " + car.getMake());
+        System.out.println("Make: " + car.getYear());
         System.out.println("Fuel Type: " + car.getFuelType());
         System.out.println("Miles Per Gallon (MPG): " + car.getMpg());
         if (car.isSold()) {
@@ -302,5 +333,30 @@ public class RunnerApp {
             mainMenu();
         }
         return mpg;
+    }
+
+    // EFFECTS: saves the dealership to file
+    private void saveDealership() {
+        try {
+            writer.openWriter();
+            writer.writeFile(dealership);
+            writer.closeWriter();
+            System.out.println("Saved your " + dealership.getBrand().toUpperCase() + " dealership to " + JSON_STORE);
+            mainMenu();
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads dealership from file
+    private void loadDealership() {
+        try {
+            dealership = reader.readDealership();
+            System.out.println("Loaded your " + dealership.getBrand().toUpperCase() + " dealership from " + JSON_STORE);
+            mainMenu();
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
     }
 }

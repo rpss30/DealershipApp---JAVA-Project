@@ -1,0 +1,33 @@
+{
+    "cars": [
+        {
+            "fuelType": "electric",
+            "year": 2005,
+            "mpg": 30.5,
+            "model": "R8",
+            "sold": false
+        },
+        {
+            "fuelType": "petrol",
+            "year": 2015,
+            "mpg": 10.5,
+            "model": "Q7",
+            "sold": true
+        },
+        {
+            "fuelType": "diesel",
+            "year": 2020,
+            "mpg": 20.5,
+            "model": "A6",
+            "sold": true
+        },
+        {
+            "fuelType": "Petrol",
+            "year": 2022,
+            "mpg": 29.4,
+            "model": "S8",
+            "sold": false
+        }
+    ],
+    "brand": "AUDI"
+}

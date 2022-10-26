@@ -1,0 +1,26 @@
+{
+    "cars": [
+        {
+          "model": "model1",
+          "year": "2000",
+          "fuelType": "petrol",
+          "mpg": "25.8",
+          "sold": true
+        },
+        {
+          "model": "model2",
+          "year": "2011",
+          "fuelType": "diesel",
+          "mpg": "38.2",
+          "sold": false
+        },
+        {
+          "model": "model3",
+          "year": "2022",
+          "fuelType": "electric",
+          "mpg": "41.4",
+          "sold": false
+        }
+    ],
+    "brand": "some brand"
+}

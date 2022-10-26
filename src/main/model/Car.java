@@ -1,48 +1,46 @@
 package model;
 
+import org.json.JSONObject;
+
 // Represents a car with given features and sale status
 public class Car {
     private String model;
-    private int make;
+    private int year;
     private String fuelType;
     private double mpg;
     private boolean sold;
 
     // REQUIRES: fuelTYpe == "petrol" | "diesel" | "electric", model.length >= 0,
-    //           2000 <= make <= 2022 and 10.0 <= mpg <= 50.0
-    // EFFECTS: constructs a car with given model, make, fuelType, mpg
+    //           2000 <= year <= 2022 and 10.0 <= mpg <= 50.0
+    // EFFECTS: constructs a car with given model, year, fuelType, mpg
     // which has not been sold yet and id = 0
-    public Car(String model, int make, String fuelType, double mpg) {
+    public Car(String model, int year, String fuelType, double mpg) {
         this.model = model;
-        this.make = make;
+        this.year = year;
         this.fuelType = fuelType;
         this.mpg = mpg;
         sold = false;
     }
 
-    // EFFECTS: returns the model of car
     public String getModel() {
         return model;
     }
 
-    // EFFECTS: returns make of the car
-    public int getMake() {
-        return make;
+    public int getYear() {
+        return year;
     }
 
-    // EFFECTS: returns the make of car
     public String getFuelType() {
         return fuelType;
+    }
+
+    public double getMpg() {
+        return mpg;
     }
 
     // EFFECTS: returns true if the car has been sold
     public boolean isSold() {
         return sold;
-    }
-
-    // returns mpg of the car
-    public double getMpg() {
-        return mpg;
     }
 
     // MODIFIES: this
@@ -51,4 +49,21 @@ public class Car {
         sold = true;
     }
 
+    // MODIFIES: this
+    // EFFECTS: sets sold to status
+    public void setSaleStatus(boolean status) {
+        sold = status;
+    }
+
+
+    // EFFECTS: returns this as a jason object
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("model", model);
+        json.put("year", year);
+        json.put("fuelType", fuelType);
+        json.put("mpg", mpg);
+        json.put("sold", sold);
+        return json;
+    }
 }

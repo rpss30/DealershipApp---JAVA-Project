@@ -16,10 +16,9 @@ class TestForCar {
     @Test
     public void testForCarConstructor() {
         assertEquals("civic", myCar.getModel());
-        assertEquals(2015, myCar.getMake());
+        assertEquals(2015, myCar.getYear());
         assertEquals("petrol", myCar.getFuelType());
         assertEquals(15.5, myCar.getMpg());
-        assertEquals(0,myCar.getId());
         assertFalse(myCar.isSold());
     }
 
@@ -30,9 +29,14 @@ class TestForCar {
     }
 
     @Test
-    public void testForSetId() {
-        assertEquals(0, myCar.getId());
-        myCar.setId(1);
-        assertEquals(1, myCar.getId());
+    public void testForSetSaleStatus() {
+        assertFalse(myCar.isSold());
+
+        myCar.setSaleStatus(true);
+        assertTrue(myCar.isSold());
+
+        myCar.setSaleStatus(false);
+        assertFalse(myCar.isSold());
+
     }
 }

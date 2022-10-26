@@ -19,4 +19,9 @@ about them and how a business revolving around them works.
 - As a user, I want to be able to mark a car as sold in my dealership.
 - As a user, I want to be able to view a list or number of all cars/sold cars in my dealership.
 - As a user, I want to be able to select a car in my dealership and sell it, remove it or get information about it.
+- As a user, I want to be able to save my dealership to file.
+- As a user, I want to be able to load my dealership from file.
 
+
+// Method was taken from SomeClassName in:
+// https://github.students.cs.ubc.ca/CPSC210/...

@@ -1,6 +1,10 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 // Represents a dealership with a brand name consisting of cars that are either sold or not
@@ -55,5 +59,30 @@ public class Dealership {
     // EFFECTS: returns a list of all the cars
     public List<Car> allCars() {
         return cars;
+    }
+
+
+    // EFFECTS: returns an unmodifiable list of thingies in this workroom
+    public List<Car> getAllCars() {
+        return Collections.unmodifiableList(cars);
+    }
+
+    // EFFECTS: returns this as a jason object
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("brand", brand);
+        json.put("cars", carsToJason());
+        return json;
+    }
+
+    // EFFECTS: returns cars in this dealership as a JSON array
+    private JSONArray carsToJason() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Car c : cars) {
+            jsonArray.put(c.toJson());
+        }
+
+        return jsonArray;
     }
 }
