@@ -122,15 +122,7 @@ public class DealershipApp {
         System.out.println("Enter 'all' to view all cars\nEnter 'sold' to view all sold cars");
         String userInput = input.nextLine();
         if (userInput.equals("all")) {
-            if (dealership.allCars().isEmpty()) {
-                System.out.println("There are no cars in the dealership");
-            } else {
-                System.out.println("Index, Model, Year, Fuel Type");
-                for (Car car : dealership.allCars()) {
-                    System.out.println(i + ". " + car.getModel() + ", " + car.getYear() + ", " + car.getFuelType());
-                    i++;
-                }
-            }
+            viewAllCars();
         } else if (userInput.equals("sold")) {
             viewSoldCars();
         } else {
@@ -140,13 +132,37 @@ public class DealershipApp {
         afterViewCars();
     }
 
+    // EFFECTS: prints out a list of all cars in the dealership
+    public void viewAllCars() {
+        int i = 1;
+        if (dealership.allCars().isEmpty()) {
+            System.out.println("There are no cars in the dealership");
+        } else {
+            System.out.println("Index, Model, Year, Fuel Type");
+            for (Car car : dealership.allCars()) {
+                String model = car.getModel();
+                String fuelType = car.getFuelType();
+                model = model.substring(0, 1).toUpperCase() + model.substring(1);
+                fuelType = fuelType.substring(0, 1).toUpperCase() + fuelType.substring(1);
+                System.out.println(i + ". " + model + ", " + car.getYear() + ", " + fuelType);
+                i++;
+            }
+        }
+    }
+
+    // EFFECTS: prints out a list of all sold cars in the dealership
     public void viewSoldCars() {
         int i = 1;
         if (dealership.soldCars().isEmpty()) {
             System.out.println("There are no sold cars in the dealership");
         } else {
+            System.out.println("Index, Model, Year, Fuel Type");
             for (Car car : dealership.soldCars()) {
-                System.out.println(i + ". " + car.getModel() + ", " + car.getYear() + ", " + car.getFuelType());
+                String model = car.getModel();
+                String fuelType = car.getFuelType();
+                model = model.substring(0, 1).toUpperCase() + model.substring(1);
+                fuelType = fuelType.substring(0, 1).toUpperCase() + fuelType.substring(1);
+                System.out.println(i + ". " + model + ", " + car.getYear() + ", " + fuelType);
                 i++;
             }
         }

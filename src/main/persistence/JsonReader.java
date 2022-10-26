@@ -65,10 +65,10 @@ public class JsonReader {
     // EFFECTS: parses thingy from JSON object and adds it to dealership
     private void addCar(Dealership ds, JSONObject jsonObject) {
         String model = jsonObject.getString("model");
-        model = model.substring(0, 1).toUpperCase() + model.substring(1);
+//        model = model.substring(0, 1).toUpperCase() + model.substring(1);
         int year = jsonObject.getInt("year");
         String fuelType = jsonObject.getString("fuelType");
-        fuelType = fuelType.substring(0, 1).toUpperCase() + fuelType.substring(1);
+//        fuelType = fuelType.substring(0, 1).toUpperCase() + fuelType.substring(1);
         double mpg = jsonObject.getDouble("mpg");
         boolean sold = jsonObject.getBoolean("sold");
         Car car = new Car(model, year, fuelType, mpg);

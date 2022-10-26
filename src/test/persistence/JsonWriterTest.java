@@ -45,9 +45,9 @@ public class JsonWriterTest extends JsonTest {
     void testWriterGeneralDealership() {
         try {
             Dealership dealership = new Dealership("some brand");
-            dealership.addCar(new Car("Model1", 2000, "petrol", 25.8));
-            dealership.addCar(new Car("Model2", 2011, "diesel", 38.2));
-            dealership.addCar(new Car("Model3", 2022, "electric", 41.4));
+            dealership.addCar(new Car("model1", 2000, "petrol", 25.8));
+            dealership.addCar(new Car("model2", 2011, "diesel", 38.2));
+            dealership.addCar(new Car("model3", 2022, "electric", 41.4));
             JsonWriter writer = new JsonWriter("./data/testWriterGeneralDealership.json");
             writer.openWriter();
             writer.writeFile(dealership);
@@ -58,9 +58,9 @@ public class JsonWriterTest extends JsonTest {
             assertEquals("some brand", dealership.getBrand());
             List<Car> cars = dealership.getAllCars();
             assertEquals(3, cars.size());
-            checkCar(cars.get(0), "Model1", 2000, "petrol", 25.8);
-            checkCar(cars.get(1), "Model2", 2011, "diesel", 38.2);
-            checkCar(cars.get(2), "Model3", 2022, "electric", 41.4);
+            checkCar(cars.get(0), "model1", 2000, "petrol", 25.8);
+            checkCar(cars.get(1), "model2", 2011, "diesel", 38.2);
+            checkCar(cars.get(2), "model3", 2022, "electric", 41.4);
 
         } catch (IOException e) {
             fail("Exception should not have been thrown");
