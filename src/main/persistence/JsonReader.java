@@ -12,7 +12,9 @@ import java.util.stream.Stream;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-// Based on the supplied Workroom example for CPSC 210.
+// Based on the supplied Workroom example for CPSC 210:
+// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+
 // Represents a reader that reads dealership from JSON data stored in file
 public class JsonReader {
     private String origin;

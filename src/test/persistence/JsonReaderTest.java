@@ -3,13 +3,13 @@ package persistence;
 import model.Car;
 import model.Dealership;
 import org.junit.jupiter.api.Test;
-
 import java.io.IOException;
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
+// Based on the supplied Workroom example for CPSC 210:
+// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 public class JsonReaderTest extends JsonTest {
     @Test
     void testReaderNonExistentFile() {

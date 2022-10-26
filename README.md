@@ -24,4 +24,4 @@ about them and how a business revolving around them works.
 
 
 // Method was taken from SomeClassName in:
-// https://github.students.cs.ubc.ca/CPSC210/...
+// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo

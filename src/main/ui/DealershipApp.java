@@ -335,6 +335,8 @@ public class DealershipApp {
         return mpg;
     }
 
+    // Method based on the supplied Workroom example for CPSC 210:
+    // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     // EFFECTS: saves the dealership to file
     private void saveDealership() {
         try {
@@ -348,6 +350,8 @@ public class DealershipApp {
         }
     }
 
+    // Method based on the supplied Workroom example for CPSC 210:
+    // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     // MODIFIES: this
     // EFFECTS: loads dealership from file
     private void loadDealership() {
