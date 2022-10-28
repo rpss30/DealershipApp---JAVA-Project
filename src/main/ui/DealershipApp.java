@@ -256,7 +256,7 @@ public class DealershipApp {
             System.out.println("There are no cars in the dealership.\nTry to add some cars from the main menu.");
             mainMenu();
         } else {
-            System.out.println("Please select from the following (1 <= " + dealership.numCars() + ")");
+            System.out.println("Please select from the following (from 1 to " + dealership.numCars() + ")");
             for (Car car : dealership.allCars()) {
                 System.out.println(i + ". " + car.getModel() + ", " + car.getYear() + ", " + car.getFuelType());
                 i++;
@@ -301,14 +301,13 @@ public class DealershipApp {
     public void sellCar() {
         if (pickedCar.isSold()) {
             System.out.println("This car has already been sold");
-            loop = false;
         } else {
             pickedCar.sellCar();
             System.out.println("You have sold the following car:");
             System.out.println(pickedCar.getModel() + ", " + pickedCar.getYear() + ", " + pickedCar.getFuelType());
             System.out.println();
-            loop = false;
         }
+        loop = false;
     }
 
     // EFFECTS: prompts user to go back to selectCar or return to the main menu
