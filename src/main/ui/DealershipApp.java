@@ -140,7 +140,6 @@ public class DealershipApp {
     // EFFECTS: prints out list of all cars/soldCars in the dealership
     //          and provides further options with afterViewCars
     public void viewCars() {
-        int i = 1;
         System.out.println("Enter 'all' to view all cars\nEnter 'sold' to view all sold cars");
         String userInput = input.nextLine();
         if (userInput.equals("all")) {
