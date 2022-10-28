@@ -1,33 +1,33 @@
 {
     "cars": [
         {
-            "fuelType": "electric",
-            "year": 2005,
-            "mpg": 30.5,
-            "model": "r8",
-            "sold": false
-        },
-        {
-            "fuelType": "petrol",
-            "year": 2015,
-            "mpg": 10.5,
-            "model": "q7",
-            "sold": true
-        },
-        {
-            "fuelType": "diesel",
-            "year": 2020,
+            "sold": true,
+            "fuelType": "Diesel",
+            "year": 2012,
             "mpg": 20.5,
-            "model": "a6",
-            "sold": true
+            "model": "Verna"
         },
         {
-            "fuelType": "petrol",
-            "year": 2022,
-            "mpg": 29.4,
-            "model": "s8",
-            "sold": false
+            "sold": true,
+            "fuelType": "Petrol",
+            "year": 2017,
+            "mpg": 15.3,
+            "model": "Elantra"
+        },
+        {
+            "sold": false,
+            "fuelType": "Electric",
+            "year": 2020,
+            "mpg": 25.8,
+            "model": "Creta"
+        },
+        {
+            "sold": true,
+            "fuelType": "Diesel",
+            "year": 2008,
+            "mpg": 24.6,
+            "model": "Sonata"
         }
     ],
-    "brand": "AUDI"
+    "brand": "HYUNDAI"
 }

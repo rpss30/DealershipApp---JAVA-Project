@@ -1,8 +1,11 @@
 package ui;
 
+import model.Dealership;
+
 // Runs the RunnerApp application
 public class Main {
     public static void main(String[] args) {
-        new DealershipApp();
+        DealershipApp dealApp = new DealershipApp();
+        dealApp.runDealership();
     }
 }

@@ -14,11 +14,11 @@ public class DealershipApp {
     private static final String JSON_STORE = "./data/dealership.json";
     private static final String ERROR_MESSAGE = "Error! Please try again:";
     private Dealership dealership;
-    private Scanner input;
+    private final Scanner input;
     private Car pickedCar;
     private boolean loop;
-    private JsonWriter writer;
-    private JsonReader reader;
+    private final JsonWriter writer;
+    private final JsonReader reader;
 
     // EFFECTS: runs the dealership application
     public DealershipApp() {
@@ -26,26 +26,30 @@ public class DealershipApp {
         writer = new JsonWriter(JSON_STORE);
         reader = new JsonReader(JSON_STORE);
         input = new Scanner(System.in);
-        System.out.println("Welcome to your dealership!");
-        welcomeMessage();
+    }
+
+    // EFFECTS: runs the dealership app
+    public void runDealership() {
+        dealershipSetUp();
         mainMenu();
     }
 
-    // EFFECTS: displays a welcome message to user
-    public void welcomeMessage() {
+    // EFFECTS: prompts the user to load an existing dealership or start a new one
+    public void dealershipSetUp() {
         System.out.println("Please choose from the following options:\nEnter 'l' to load an existing dealership:");
         System.out.println("Enter 'c' to start a new dealership");
         String userInput = input.nextLine();
         userInput = userInput.toLowerCase();
         if (userInput.equals("l")) {
             loadDealership();
+            System.out.println("Welcome back to your " + dealership.getBrand() + " dealership!");
         } else if (userInput.equals("c")) {
             System.out.println("Please choose a brand for your dealership:");
             dealership = new Dealership(chooseBrand());
             System.out.println("Congratulations! You have a new " + dealership.getBrand() + " dealership.");
         } else {
             System.out.println(ERROR_MESSAGE);
-            welcomeMessage();
+            dealershipSetUp();
         }
     }
 
@@ -55,15 +59,15 @@ public class DealershipApp {
         return brandName.toUpperCase();
     }
 
-    // EFFECTS: displays the main menu
+    // EFFECTS: displays the main menu prior to processing user input
     public void mainMenu() {
         System.out.println("Please choose from the following options:");
         System.out.println("Enter '+' to add a car");
         System.out.println("Enter 'v' to view cars");
         System.out.println("Enter 'n' to find out the number of cars");
         System.out.println("Enter 's' to select a car");
-        System.out.println("Enter 'k' to save dealership");
-        System.out.println("Enter 'l' to load dealership");
+        System.out.println("Enter 'k' to save current dealership and overwrite existing one");
+        System.out.println("Enter 'l' to load exisiting dealership");
         System.out.println("Enter 'q' to quit");
         processInput();
     }
@@ -84,11 +88,29 @@ public class DealershipApp {
             saveDealership();
         } else if (userInput.equals("l")) {
             loadDealership();
+            System.out.println("Welcome back to your " + dealership.getBrand() + " dealership!");
+            mainMenu();
         } else if (userInput.equals("q")) {
-            System.out.println("Goodbye!");
+            quitOptions();
         } else {
             System.out.println(ERROR_MESSAGE);
             mainMenu();
+        }
+    }
+
+    // EFFECTS: offers user to save changes one last time before quitting
+    public void quitOptions() {
+        System.out.println("Would you like to save your changes?\nEnter 'yes' or 'no'");
+        String userInput = input.nextLine();
+        userInput = userInput.toLowerCase();
+        if (userInput.equals("no")) {
+            System.out.println("Goodbye!");
+        } else if (userInput.equals("yes")) {
+            saveQuitDealership();
+            System.out.println("Your changes have been saved.\nGoodbye!");
+        } else {
+            System.out.println(ERROR_MESSAGE);
+            quitOptions();
         }
     }
 
@@ -231,20 +253,25 @@ public class DealershipApp {
     //          options with actionOnSelectedCar
     public void selectCar() {
         int i = 1;
-        System.out.println("Please select from the following (<= " + dealership.numCars() + ")");
-        for (Car car : dealership.allCars()) {
-            System.out.println(i + ". " + car.getModel() + ", " + car.getYear() + ", " + car.getFuelType());
-            i++;
-        }
-        int userInput = Integer.parseInt(input.nextLine());
-        if (userInput <= dealership.numCars()) {
-            pickedCar = dealership.allCars().get(userInput - 1);
-            System.out.println("You have selected the following car");
-            System.out.println(pickedCar.getModel() + ", " + pickedCar.getYear() + ", " + pickedCar.getFuelType());
-            actionOnSelectedCar();
+        if (dealership.allCars().isEmpty()) {
+            System.out.println("There are no cars in the dealership.\nTry to add some cars from the main menu.");
+            mainMenu();
         } else {
-            System.out.println(ERROR_MESSAGE);
-            selectCar();
+            System.out.println("Please select from the following (1 <= " + dealership.numCars() + ")");
+            for (Car car : dealership.allCars()) {
+                System.out.println(i + ". " + car.getModel() + ", " + car.getYear() + ", " + car.getFuelType());
+                i++;
+            }
+            int userInput = Integer.parseInt(input.nextLine());
+            if (userInput <= dealership.numCars()) {
+                pickedCar = dealership.allCars().get(userInput - 1);
+                System.out.println("You have selected the following car");
+                System.out.println(pickedCar.getModel() + ", " + pickedCar.getYear() + ", " + pickedCar.getFuelType());
+                actionOnSelectedCar();
+            } else {
+                System.out.println(ERROR_MESSAGE);
+                selectCar();
+            }
         }
     }
 
@@ -258,11 +285,7 @@ public class DealershipApp {
                 getInfo(pickedCar);
                 loop = false;
             } else if (otherUserInput.equals("sell")) {
-                pickedCar.sellCar();
-                System.out.println("You have sold the following car:");
-                System.out.println(pickedCar.getModel() + ", " + pickedCar.getYear() + ", " + pickedCar.getFuelType());
-                System.out.println();
-                loop = false;
+                sellCar();
             } else if (otherUserInput.equals("-")) {
                 System.out.println("You have removed the following car:");
                 System.out.println(pickedCar.getModel() + ", " + pickedCar.getYear() + ", " + pickedCar.getFuelType());
@@ -274,6 +297,19 @@ public class DealershipApp {
             }
         }
         afterSelectCar();
+    }
+
+    public void sellCar() {
+        if (pickedCar.isSold()) {
+            System.out.println("This car has already been sold");
+            loop = false;
+        } else {
+            pickedCar.sellCar();
+            System.out.println("You have sold the following car:");
+            System.out.println(pickedCar.getModel() + ", " + pickedCar.getYear() + ", " + pickedCar.getFuelType());
+            System.out.println();
+            loop = false;
+        }
     }
 
     // EFFECTS: prompts user to go back to selectCar or return to the main menu
@@ -359,8 +395,24 @@ public class DealershipApp {
             writer.openWriter();
             writer.writeFile(dealership);
             writer.closeWriter();
-            System.out.println("Saved your " + dealership.getBrand().toUpperCase() + " dealership to " + JSON_STORE);
+            String brandName = dealership.getBrand().toUpperCase();
+            System.out.println("Saved new changes for " + brandName + " dealership to " + JSON_STORE);
             mainMenu();
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // Based on saveWorkRoom method in the WorkRoomApp class:
+    // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+    // EFFECTS: saves the dealership to file before quitting
+    private void saveQuitDealership() {
+        try {
+            writer.openWriter();
+            writer.writeFile(dealership);
+            writer.closeWriter();
+            String brandName = dealership.getBrand().toUpperCase();
+            System.out.println("Saved your new changes for" + brandName + " dealership to " + JSON_STORE);
         } catch (FileNotFoundException e) {
             System.out.println("Unable to write to file: " + JSON_STORE);
         }
@@ -373,8 +425,7 @@ public class DealershipApp {
     private void loadDealership() {
         try {
             dealership = reader.readDealership();
-            System.out.println("Loaded your " + dealership.getBrand().toUpperCase() + " dealership from " + JSON_STORE);
-            mainMenu();
+            System.out.println("Loaded " + dealership.getBrand().toUpperCase() + " dealership from " + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
         }
