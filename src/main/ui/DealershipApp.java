@@ -67,7 +67,7 @@ public class DealershipApp {
         System.out.println("Enter 'n' to find out the number of cars");
         System.out.println("Enter 's' to select a car");
         System.out.println("Enter 'k' to save current dealership and overwrite existing one");
-        System.out.println("Enter 'l' to load exisiting dealership");
+        System.out.println("Enter 'l' to load existing dealership");
         System.out.println("Enter 'q' to quit");
         processInput();
     }
