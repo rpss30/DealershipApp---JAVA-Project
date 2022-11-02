@@ -72,7 +72,7 @@ public class DealershipApp {
         processInput();
     }
 
-    // EFFECTS: processes user input
+    // EFFECTS: processes user input for main menu options
     public void processInput() {
         String userInput = input.nextLine();
         userInput = userInput.toLowerCase();
@@ -86,6 +86,7 @@ public class DealershipApp {
             selectCar();
         } else if (userInput.equals("k")) {
             saveDealership();
+            mainMenu();
         } else if (userInput.equals("l")) {
             loadDealership();
             System.out.println("Welcome back to your " + dealership.getBrand() + " dealership!");
@@ -106,7 +107,7 @@ public class DealershipApp {
         if (userInput.equals("no")) {
             System.out.println("Goodbye!");
         } else if (userInput.equals("yes")) {
-            saveQuitDealership();
+            saveDealership();
             System.out.println("Your changes have been saved.\nGoodbye!");
         } else {
             System.out.println(ERROR_MESSAGE);
@@ -298,6 +299,7 @@ public class DealershipApp {
         afterSelectCar();
     }
 
+    // EFFECTS: sells the selected unless already sold
     public void sellCar() {
         if (pickedCar.isSold()) {
             System.out.println("This car has already been sold");
@@ -395,22 +397,6 @@ public class DealershipApp {
             writer.closeWriter();
             String brandName = dealership.getBrand().toUpperCase();
             System.out.println("Saved new changes for " + brandName + " dealership to " + JSON_STORE);
-            mainMenu();
-        } catch (FileNotFoundException e) {
-            System.out.println("Unable to write to file: " + JSON_STORE);
-        }
-    }
-
-    // Based on saveWorkRoom method in the WorkRoomApp class:
-    // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
-    // EFFECTS: saves the dealership to file before quitting
-    private void saveQuitDealership() {
-        try {
-            writer.openWriter();
-            writer.writeFile(dealership);
-            writer.closeWriter();
-            String brandName = dealership.getBrand().toUpperCase();
-            System.out.println("Saved your new changes for" + brandName + " dealership to " + JSON_STORE);
         } catch (FileNotFoundException e) {
             System.out.println("Unable to write to file: " + JSON_STORE);
         }
