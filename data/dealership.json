@@ -1,33 +1,19 @@
 {
     "cars": [
         {
-            "sold": true,
-            "fuelType": "Diesel",
-            "year": 2012,
-            "mpg": 20.5,
-            "model": "Verna"
-        },
-        {
-            "sold": true,
+            "sold": false,
             "fuelType": "Petrol",
-            "year": 2017,
-            "mpg": 15.3,
-            "model": "Elantra"
+            "year": 2010,
+            "mpg": 35,
+            "model": "R8"
         },
         {
             "sold": false,
-            "fuelType": "Electric",
-            "year": 2020,
-            "mpg": 25.8,
-            "model": "Creta"
-        },
-        {
-            "sold": true,
             "fuelType": "Diesel",
-            "year": 2008,
-            "mpg": 24.6,
-            "model": "Sonata"
+            "year": 2015,
+            "mpg": 15,
+            "model": "Q7"
         }
     ],
-    "brand": "HYUNDAI"
+    "brand": "AUDI"
 }
