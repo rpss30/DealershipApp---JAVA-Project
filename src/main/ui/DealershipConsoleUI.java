@@ -9,7 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
-// Runs the dealership as an application
+// Runs the console user interface of the dealership application
 public class DealershipConsoleUI {
     private static final String JSON_STORE = "./data/dealership.json";
     private static final String ERROR_MESSAGE = "Error! Please try again:";

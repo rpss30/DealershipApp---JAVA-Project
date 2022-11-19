@@ -10,7 +10,7 @@ import ui.panels.HomeTab;
 import javax.swing.*;
 import java.io.IOException;
 
-// Runs the RunnerApp application
+// Runs the graphical user interface of the dealership application
 public class DealershipGraphicalUI extends JFrame {
     private static int WIDTH = 500;
     private static int HEIGHT = 500;
@@ -50,7 +50,9 @@ public class DealershipGraphicalUI extends JFrame {
     // EFFECTS: creates and adds a tabbed pane at the top of the frame with panels
     public void createTabbedPane() {
         tabbedPane = new JTabbedPane();
-
+//        ImageIcon menu = new ImageIcon("./data/menu.png");
+//        ImageIcon directory = new ImageIcon("./data/directory.png");
+//        ImageIcon warehouse = new ImageIcon("./data/warehouse.png");
         tabbedPane.addTab("Main Menu", null, homeTab, null);
         tabbedPane.addTab("Directory", null, directory, null);
         tabbedPane.addTab("Warehouse", null, warehouse, null);
