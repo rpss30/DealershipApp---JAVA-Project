@@ -3,9 +3,9 @@ package ui;
 import model.Dealership;
 import persistence.JsonReader;
 import persistence.JsonWriter;
-import ui.tabs.DirectoryTab;
-import ui.tabs.WarehouseTab;
-import ui.tabs.HomeTab;
+import ui.panels.DirectoryTab;
+import ui.panels.WarehouseTab;
+import ui.panels.HomeTab;
 
 import javax.swing.*;
 import java.io.IOException;

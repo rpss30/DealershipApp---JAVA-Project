@@ -1,4 +1,4 @@
-package ui.tabs;
+package ui.panels;
 
 import model.Car;
 import model.Dealership;

@@ -1,4 +1,4 @@
-package ui.tabs;
+package ui.panels;
 
 import model.Car;
 import model.Dealership;
@@ -39,12 +39,10 @@ public class WarehouseTab extends JPanel {
     // MODIFIES: this
     // EFFECTS: displays all the image icons in the panel
     public void layIcons() {
-        JPanel iconPanel = new JPanel();
         for (ImageIcon icon : icons) {
             JLabel label = new JLabel(icon);
-            iconPanel.add(label);
+            this.add(label);
         }
-        this.add(iconPanel);
     }
 
     // MODIFIES: this

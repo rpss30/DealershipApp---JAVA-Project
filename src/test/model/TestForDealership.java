@@ -102,4 +102,11 @@ public class TestForDealership {
         myShop.addCar(car1);
         assertEquals(2, myShop.numCars());
     }
+
+    @Test
+    public void testForUnsoldCars() {
+        assertEquals(myShop.numCars(), myShop.unsoldCars().size());
+        car2.sellCar();
+        assertEquals(myShop.numCars() - myShop.numSoldCars(), myShop.unsoldCars().size());
+    }
 }
