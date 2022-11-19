@@ -105,8 +105,22 @@ public class TestForDealership {
 
     @Test
     public void testForUnsoldCars() {
+        myShop.addCar(car1);
+        myShop.addCar(car2);
+        myShop.addCar(car3);
         assertEquals(myShop.numCars(), myShop.unsoldCars().size());
-        car2.sellCar();
+        assertTrue(myShop.unsoldCars().contains(car1));
+        assertTrue(myShop.unsoldCars().contains(car2));
+        assertTrue(myShop.unsoldCars().contains(car3));
+
+        car1.sellCar();
         assertEquals(myShop.numCars() - myShop.numSoldCars(), myShop.unsoldCars().size());
+        assertFalse(myShop.unsoldCars().contains(car1));
+        assertTrue(myShop.unsoldCars().contains(car2));
+        assertTrue(myShop.unsoldCars().contains(car3));
+
+        car2.sellCar();
+        car3.sellCar();
+        assertEquals(0, myShop.unsoldCars().size());
     }
 }

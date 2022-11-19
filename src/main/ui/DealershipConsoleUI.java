@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 // Runs the dealership as an application
-public class DealershipApp {
+public class DealershipConsoleUI {
     private static final String JSON_STORE = "./data/dealership.json";
     private static final String ERROR_MESSAGE = "Error! Please try again:";
     private Dealership dealership;
@@ -21,7 +21,7 @@ public class DealershipApp {
     private final JsonReader reader;
 
     // EFFECTS: runs the dealership application
-    public DealershipApp() {
+    public DealershipConsoleUI() {
         loop = true;
         writer = new JsonWriter(JSON_STORE);
         reader = new JsonReader(JSON_STORE);

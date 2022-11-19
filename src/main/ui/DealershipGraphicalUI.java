@@ -11,7 +11,7 @@ import javax.swing.*;
 import java.io.IOException;
 
 // Runs the RunnerApp application
-public class DealershipUI extends JFrame {
+public class DealershipGraphicalUI extends JFrame {
     private static int WIDTH = 500;
     private static int HEIGHT = 500;
     private HomeTab homeTab;
@@ -24,12 +24,12 @@ public class DealershipUI extends JFrame {
     private static final String JSON_STORE = "./data/dealership.json";
 
     public static void main(String[] args) {
-        new DealershipUI();
+        new DealershipGraphicalUI();
     }
 
     //MODIFIES: this
     //EFFECTS: sets up and displays the Dealership graphical user interface
-    private DealershipUI() {
+    private DealershipGraphicalUI() {
         writer = new JsonWriter(JSON_STORE);
         reader = new JsonReader(JSON_STORE);
         setSize(WIDTH, HEIGHT);
@@ -39,7 +39,6 @@ public class DealershipUI extends JFrame {
         directory = new DirectoryTab(dealership, warehouse);
         homeTab = new HomeTab(dealership, this, directory, warehouse);
         createTabbedPane();
-        add(tabbedPane);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent e) {
                 homeTab.quitOptionsDialog();
@@ -48,13 +47,14 @@ public class DealershipUI extends JFrame {
         setVisible(true);
     }
 
-    // EFFECTS: creates a tabbed pane at the top of the frame with panels
+    // EFFECTS: creates and adds a tabbed pane at the top of the frame with panels
     public void createTabbedPane() {
         tabbedPane = new JTabbedPane();
 
         tabbedPane.addTab("Main Menu", null, homeTab, null);
         tabbedPane.addTab("Directory", null, directory, null);
         tabbedPane.addTab("Warehouse", null, warehouse, null);
+        add(tabbedPane);
     }
 
     // MODIFIES: dealership

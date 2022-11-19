@@ -30,6 +30,11 @@ public class DirectoryTab extends JPanel implements ActionListener {
         this.dealership = dealership;
         this.warehouse = warehouse;
         setLayout(new GridLayout(2,1));
+        setUpDirectory();
+    }
+
+    // EFFECTS: sets up the directory
+    public void setUpDirectory() {
         initializeTable();
         addButtons();
     }

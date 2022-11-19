@@ -19,6 +19,11 @@ public class WarehouseTab extends JPanel {
         this.dealership = dealership;
 
         setLayout(new FlowLayout());
+        setUpWarehouse();
+    }
+
+    // EFFECTS: sets up the warehouse
+    public void setUpWarehouse() {
         addIcons();
         layIcons();
     }

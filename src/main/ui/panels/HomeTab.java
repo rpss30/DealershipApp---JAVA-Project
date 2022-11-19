@@ -3,7 +3,7 @@ package ui.panels;
 import model.Car;
 import model.Dealership;
 import persistence.JsonWriter;
-import ui.DealershipUI;
+import ui.DealershipGraphicalUI;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -22,20 +22,25 @@ public class HomeTab extends JPanel implements ActionListener {
     private JTextField year;
     private JTextField fuel;
     private JTextField mpg;
-    private DealershipUI gui;
+    private DealershipGraphicalUI gui;
     private DirectoryTab directory;
     private WarehouseTab warehouse;
     private final JsonWriter writer;
     private static final String JSON_STORE = "./data/dealership.json";
 
     // EFFECTS: constructs a panel with a greeting and buttons for the main menu
-    public HomeTab(Dealership dealership, DealershipUI ui, DirectoryTab directory, WarehouseTab warehouse) {
+    public HomeTab(Dealership dealership, DealershipGraphicalUI ui, DirectoryTab directory, WarehouseTab warehouse) {
         gui = ui;
         writer = new JsonWriter(JSON_STORE);
         this.dealership = dealership;
         this.warehouse = warehouse;
         this.directory = directory;
         setLayout(new GridLayout(2,1));
+        setUpHomePanel();
+    }
+
+    // EFFECTS: sets up the home page
+    public void setUpHomePanel() {
         addGreeting();
         addHomeButtons();
     }
