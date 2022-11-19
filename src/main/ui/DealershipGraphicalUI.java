@@ -19,7 +19,6 @@ public class DealershipGraphicalUI extends JFrame {
     private DirectoryTab directory;
     private JTabbedPane tabbedPane;
     private Dealership dealership;
-    private final JsonWriter writer;
     private final JsonReader reader;
     private static final String JSON_STORE = "./data/dealership.json";
 
@@ -30,7 +29,6 @@ public class DealershipGraphicalUI extends JFrame {
     //MODIFIES: this
     //EFFECTS: sets up and displays the Dealership graphical user interface
     private DealershipGraphicalUI() {
-        writer = new JsonWriter(JSON_STORE);
         reader = new JsonReader(JSON_STORE);
         setSize(WIDTH, HEIGHT);
         setTitle("DealershipApp");
