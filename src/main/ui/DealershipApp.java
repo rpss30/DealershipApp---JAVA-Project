@@ -118,7 +118,7 @@ public class DealershipApp {
     // EFFECTS: adds a car to the dealership
     public void addOneCar() {
         System.out.println("Please enter the following information:");
-        Car newCar = new Car(enterModel(), enterMake(), enterFuelType(), enterMpg());
+        Car newCar = new Car(enterModel(), enterYear(), enterFuelType(), enterMpg());
         dealership.addCar(newCar);
         System.out.println("You have added the following car to your dealership:");
         getInfo(newCar);
@@ -354,7 +354,7 @@ public class DealershipApp {
     }
 
     // EFFECTS: returns make for the car entered by the user
-    public int enterMake() {
+    public int enterYear() {
         System.out.println("Enter year (from 2000 to 2022):");
         int year = Integer.parseInt(input.nextLine());
         if (year < 2000 || year > 2022) {

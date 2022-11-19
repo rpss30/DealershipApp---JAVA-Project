@@ -46,6 +46,17 @@ public class Dealership {
         return soldCars;
     }
 
+    // EFFECTS: returns a list of all the unsold cars
+    public List<Car> unsoldCars() {
+        List<Car> unsoldCars = new ArrayList<>();
+        for (Car car : cars) {
+            if (!car.isSold()) {
+                unsoldCars.add(car);
+            }
+        }
+        return unsoldCars;
+    }
+
     // EFFECTS: returns the total number of sold cars in the dealership
     public int numSoldCars() {
         return soldCars().size();
