@@ -50,12 +50,12 @@ public class DealershipGraphicalUI extends JFrame {
     // EFFECTS: creates and adds a tabbed pane at the top of the frame with panels
     public void createTabbedPane() {
         tabbedPane = new JTabbedPane();
-//        ImageIcon menu = new ImageIcon("./data/menu.png");
-//        ImageIcon directory = new ImageIcon("./data/directory.png");
-//        ImageIcon warehouse = new ImageIcon("./data/warehouse.png");
-        tabbedPane.addTab("Main Menu", null, homeTab, null);
-        tabbedPane.addTab("Directory", null, directory, null);
-        tabbedPane.addTab("Warehouse", null, warehouse, null);
+        ImageIcon menu = new ImageIcon("./data/menu.png");
+        ImageIcon directoryIcon = new ImageIcon("./data/directory.png");
+        ImageIcon warehouseIcon = new ImageIcon("./data/warehouse.png");
+        tabbedPane.addTab("Main Menu", menu, homeTab, null);
+        tabbedPane.addTab("Directory", directoryIcon, directory, null);
+        tabbedPane.addTab("Warehouse", warehouseIcon, warehouse, null);
         add(tabbedPane);
     }
 
