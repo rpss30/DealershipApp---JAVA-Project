@@ -47,6 +47,9 @@ public class Car {
     // EFFECTS: marks the car as sold
     public void sellCar() {
         sold = true;
+        model = model.substring(0, 1).toUpperCase() + model.substring(1);
+        String fuel = fuelType.substring(0, 1).toUpperCase() + fuelType.substring(1);
+        EventLog.getInstance().logEvent(new Event("Sold " + model + "(" + year + "), " + fuel));
     }
 
     // MODIFIES: this

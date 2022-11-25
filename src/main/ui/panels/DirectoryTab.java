@@ -162,13 +162,13 @@ public class DirectoryTab extends JPanel implements ActionListener {
 
         labelAndText = new JPanel();
         labelAndText.setLayout(new GridLayout(0, 2));
-        labelAndText.add(new JLabel("Model: "));
+        labelAndText.add(new JLabel("Model (alphanumeric characters only): "));
         labelAndText.add(model);
-        labelAndText.add(new JLabel("Year: "));
+        labelAndText.add(new JLabel("Year (2000 to 2022): "));
         labelAndText.add(year);
-        labelAndText.add(new JLabel("Fuel: "));
+        labelAndText.add(new JLabel("Fuel (Petrol, Diesel or Electric): "));
         labelAndText.add(fuel);
-        labelAndText.add(new JLabel("Miles Per Gallon (MPG): "));
+        labelAndText.add(new JLabel("Miles Per Gallon (10.0 mpg to 50.0 mpg): "));
         labelAndText.add(mpg);
 
         int i = JOptionPane.showConfirmDialog(this, labelAndText,

@@ -112,7 +112,7 @@ public class HomeTab extends JPanel implements ActionListener {
     }
 
     // EFFECTS: prompts user with a dialog box to enter information about new car to add
-    private void addCarDialog() {
+    public void addCarDialog() {
         model = new JTextField();
         year = new JTextField();
         fuel = new JTextField();
@@ -120,13 +120,13 @@ public class HomeTab extends JPanel implements ActionListener {
 
         labelAndText = new JPanel();
         labelAndText.setLayout(new GridLayout(0, 2));
-        labelAndText.add(new JLabel("Model: "));
+        labelAndText.add(new JLabel("Model (alphanumeric characters only): "));
         labelAndText.add(model);
-        labelAndText.add(new JLabel("Year: "));
+        labelAndText.add(new JLabel("Year (2000 to 2022): "));
         labelAndText.add(year);
-        labelAndText.add(new JLabel("Fuel: "));
+        labelAndText.add(new JLabel("Fuel (Petrol, Diesel or Electric): "));
         labelAndText.add(fuel);
-        labelAndText.add(new JLabel("Miles Per Gallon (MPG): "));
+        labelAndText.add(new JLabel("Miles Per Gallon (10.0 mpg to 50.0 mpg): "));
         labelAndText.add(mpg);
 
         int i = JOptionPane.showConfirmDialog(this, labelAndText,
@@ -139,7 +139,7 @@ public class HomeTab extends JPanel implements ActionListener {
     // EFFECTS: processes the information entered by the user in the text fields,
     //              if input is valid, then adds car with entered information, follows by a confirmation dialog
     //              else error dialog appears and user is asked to try again
-    private void processOption(int i) {
+    public void processOption(int i) {
         if (i == 0) {
             while (!validInput()) {
                 JOptionPane.showMessageDialog(this,
@@ -191,7 +191,7 @@ public class HomeTab extends JPanel implements ActionListener {
     }
 
     // EFFECTS: returns true if information entered about new car to add is valid, false otherwise
-    private boolean validInput() {
+    public boolean validInput() {
         boolean valid;
 
         if (!year.getText().matches("^\\d+$") ||  !mpg.getText().matches("[0-9]{1,13}(\\.[0-9]*)?")) {

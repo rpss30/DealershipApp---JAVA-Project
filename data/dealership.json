@@ -15,7 +15,7 @@
             "model": "Q7"
         },
         {
-            "sold": false,
+            "sold": true,
             "fuelType": "Electric",
             "year": 2016,
             "mpg": 24.7,
@@ -27,13 +27,6 @@
             "year": 2019,
             "mpg": 20.3,
             "model": "S8"
-        },
-        {
-            "sold": false,
-            "fuelType": "Petrol",
-            "year": 2015,
-            "mpg": 21.5,
-            "model": "A4"
         }
     ],
     "brand": "AUDI"

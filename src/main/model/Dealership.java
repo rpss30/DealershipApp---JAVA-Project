@@ -22,12 +22,18 @@ public class Dealership {
     // EFFECTS: adds a car to the dealership and sets its id number
     public void addCar(Car car) {
         cars.add(car);
+        String model = car.getModel().substring(0, 1).toUpperCase() + car.getModel().substring(1);
+        String fuel = car.getFuelType().substring(0, 1).toUpperCase() + car.getFuelType().substring(1);
+        EventLog.getInstance().logEvent(new Event("Added " + model + "(" + car.getYear() + "), " + fuel));
     }
 
     // MODIFIES: this
     // EFFECTS: removes a car from the dealership
     public void removeCar(Car car) {
         cars.remove(car);
+        String model = car.getModel().substring(0, 1).toUpperCase() + car.getModel().substring(1);
+        String fuel = car.getFuelType().substring(0, 1).toUpperCase() + car.getFuelType().substring(1);
+        EventLog.getInstance().logEvent(new Event("Removed " + model + "(" + car.getYear() + "), " + fuel));
     }
 
     // EFFECTS: returns the total number of cars in the dealership
