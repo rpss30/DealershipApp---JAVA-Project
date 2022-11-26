@@ -16,6 +16,7 @@ public class Dealership {
     public Dealership(String name) {
         brand = name;
         cars = new ArrayList<>();
+        EventLog.getInstance().logEvent(new Event("Created a new " + brand.toUpperCase() + " dealership"));
     }
 
     // MODIFIES: this

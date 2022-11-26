@@ -2,6 +2,8 @@ package ui.panels;
 
 import model.Car;
 import model.Dealership;
+import model.Event;
+import model.EventLog;
 import persistence.JsonWriter;
 import ui.DealershipGraphicalUI;
 import javax.swing.*;
@@ -233,5 +235,14 @@ public class HomeTab extends JPanel implements ActionListener {
             }
         }
         gui.dispose();
+        printEventLog();
+    }
+
+    // EFFECTS: prints all the logged events up to this point on the console and then clears the EventLog
+    public void printEventLog() {
+        for (Event next : EventLog.getInstance()) {
+            System.out.println(next.toString() + "\n\n");;
+        }
+        EventLog.getInstance().clear();
     }
 }

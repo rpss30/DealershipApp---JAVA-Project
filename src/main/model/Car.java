@@ -20,6 +20,9 @@ public class Car {
         this.fuelType = fuelType;
         this.mpg = mpg;
         sold = false;
+        String carModel = this.model.substring(0, 1).toUpperCase() + this.model.substring(1);
+        String fuel = fuelType.substring(0, 1).toUpperCase() + fuelType.substring(1);
+        EventLog.getInstance().logEvent(new Event("Sold " + carModel + "(" + year + "), " + fuel));
     }
 
     public String getModel() {
