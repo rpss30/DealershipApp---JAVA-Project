@@ -22,7 +22,6 @@ public class Car {
         sold = false;
         String carModel = this.model.substring(0, 1).toUpperCase() + this.model.substring(1);
         String fuel = fuelType.substring(0, 1).toUpperCase() + fuelType.substring(1);
-        EventLog.getInstance().logEvent(new Event("Sold " + carModel + "(" + year + "), " + fuel));
     }
 
     public String getModel() {
@@ -52,7 +51,7 @@ public class Car {
         sold = true;
         model = model.substring(0, 1).toUpperCase() + model.substring(1);
         String fuel = fuelType.substring(0, 1).toUpperCase() + fuelType.substring(1);
-        EventLog.getInstance().logEvent(new Event("Sold " + model + "(" + year + "), " + fuel));
+        EventLog.getInstance().logEvent(new Event("Sold " + model + " (" + year + "), " + fuel));
     }
 
     // MODIFIES: this

@@ -1,6 +1,7 @@
 package ui;
 
 import model.Dealership;
+import model.EventLog;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 import ui.panels.DirectoryTab;
@@ -90,16 +91,21 @@ public class DealershipGraphicalUI extends JFrame {
     //              else, instantiates a new dealership with the given brand name
     private void chooseBrand() {
         String brand = JOptionPane.showInputDialog("Please select a brand for your dealership");
-        while (!brand.matches("[a-zA-Z]+")) {
+        if (brand == null) {
+            this.dispose();
+        } else {
+            while (!brand.matches("[a-zA-Z]+")) {
+                JOptionPane.showMessageDialog(this,
+                        "Please only include alphabets",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
+                brand = JOptionPane.showInputDialog("Please select a brand for your dealership");
+            }
+            dealership = new Dealership(brand.toUpperCase());
             JOptionPane.showMessageDialog(this,
-                    "Please only include alphabets",
-                    "Error",
-                    JOptionPane.ERROR_MESSAGE);
-            brand = JOptionPane.showInputDialog("Please select a brand for your dealership");
+                    "Welcome to your new dealership!",
+                    "Welcome", JOptionPane.PLAIN_MESSAGE);
         }
-        dealership = new Dealership(brand.toUpperCase());
-        JOptionPane.showMessageDialog(this,
-                "Welcome to your new dealership!",
-                "Welcome", JOptionPane.PLAIN_MESSAGE);
     }
+
 }

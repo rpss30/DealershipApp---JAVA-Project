@@ -15,8 +15,9 @@ public class Dealership {
     // EFFECTS: constructs a dealership with given name and an empty list of cars
     public Dealership(String name) {
         brand = name;
+        brand.toUpperCase();
         cars = new ArrayList<>();
-        EventLog.getInstance().logEvent(new Event("Created a new " + brand.toUpperCase() + " dealership"));
+        EventLog.getInstance().logEvent(new Event("Created a new " + getBrand() + " dealership"));
     }
 
     // MODIFIES: this
@@ -25,7 +26,8 @@ public class Dealership {
         cars.add(car);
         String model = car.getModel().substring(0, 1).toUpperCase() + car.getModel().substring(1);
         String fuel = car.getFuelType().substring(0, 1).toUpperCase() + car.getFuelType().substring(1);
-        EventLog.getInstance().logEvent(new Event("Added " + model + "(" + car.getYear() + "), " + fuel));
+        EventLog.getInstance().logEvent(new Event("Added "
+                + model + " (" + car.getYear() + "), " + fuel + ", to the dealership"));
     }
 
     // MODIFIES: this
@@ -34,7 +36,8 @@ public class Dealership {
         cars.remove(car);
         String model = car.getModel().substring(0, 1).toUpperCase() + car.getModel().substring(1);
         String fuel = car.getFuelType().substring(0, 1).toUpperCase() + car.getFuelType().substring(1);
-        EventLog.getInstance().logEvent(new Event("Removed " + model + "(" + car.getYear() + "), " + fuel));
+        EventLog.getInstance().logEvent(new Event("Removed " + model + " (" + car.getYear() + "), "
+                + fuel + ", from the dealership"));
     }
 
     // EFFECTS: returns the total number of cars in the dealership

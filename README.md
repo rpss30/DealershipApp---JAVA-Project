@@ -53,3 +53,27 @@ for a new dealership, which should be strictly alphabetical, and a new dealershi
   - https://www.cleanpng.com/png-hamburger-button-computer-icons-menu-2094870/download-png.html
   - https://toppng.com/show_download/222962/folder-icon-png-transparent-black-and-white-folder-ico/large
   - https://www.subpng.com/png-y3550x/download.html
+
+## Phase 4: Task 2
+Wed Nov 30 14:01:04 PST 2022\
+Event log cleared.
+
+
+Wed Nov 30 14:01:16 PST 2022\
+Added Crv (2008), Petrol, to the dealership
+
+
+Wed Nov 30 14:01:31 PST 2022\
+Added Civic (2019), Diesel, to the dealership
+
+
+Wed Nov 30 14:01:50 PST 2022\
+Added Insight (2022), Electric, to the dealership
+
+
+Wed Nov 30 14:01:58 PST 2022\
+Sold Civic (2019), Diesel
+
+
+Wed Nov 30 14:02:00 PST 2022\
+Removed Crv (2008), Petrol, from the dealership

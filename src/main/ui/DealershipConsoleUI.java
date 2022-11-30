@@ -26,6 +26,7 @@ public class DealershipConsoleUI {
         writer = new JsonWriter(JSON_STORE);
         reader = new JsonReader(JSON_STORE);
         input = new Scanner(System.in);
+        runDealership();
     }
 
     // EFFECTS: runs the dealership app
