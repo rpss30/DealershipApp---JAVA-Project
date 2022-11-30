@@ -77,3 +77,5 @@ Sold Civic (2019), Diesel
 
 Wed Nov 30 14:02:00 PST 2022\
 Removed Crv (2008), Petrol, from the dealership
+
+## Phase 4: Task 3
