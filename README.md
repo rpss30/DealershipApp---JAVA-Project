@@ -55,27 +55,35 @@ for a new dealership, which should be strictly alphabetical, and a new dealershi
   - https://www.subpng.com/png-y3550x/download.html
 
 ## Phase 4: Task 2
-Wed Nov 30 14:01:04 PST 2022\
-Event log cleared.
+Thu Dec 01 23:32:04 PST 2022\
+Created a new HONDA dealership
 
 
-Wed Nov 30 14:01:16 PST 2022\
+Thu Dec 01 23:32:18 PST 2022\
 Added Crv (2008), Petrol, to the dealership
 
 
-Wed Nov 30 14:01:31 PST 2022\
+Thu Dec 01 23:32:32 PST 2022\
 Added Civic (2019), Diesel, to the dealership
 
 
-Wed Nov 30 14:01:50 PST 2022\
+Thu Dec 01 23:32:53 PST 2022\
 Added Insight (2022), Electric, to the dealership
 
 
-Wed Nov 30 14:01:58 PST 2022\
+Thu Dec 01 23:33:00 PST 2022\
 Sold Civic (2019), Diesel
 
 
-Wed Nov 30 14:02:00 PST 2022\
+Thu Dec 01 23:33:03 PST 2022\
 Removed Crv (2008), Petrol, from the dealership
 
 ## Phase 4: Task 3
+In my project, I have followed a very basic design with some repetition among various classes. If I had more time, I 
+would definitely change a couple of things in my project in order to improve its design.
+- I would include checked exceptions in place of the REQUIRES clause in the constructor for the class Car.
+- I would implement the Singleton Design Pattern in the class Dealership. Since the application revolves around just 
+one instance of Dealership, using this design pattern would ensure that only one instance of dealership can be used 
+across the application.
+- I would create a super class for all the tabs in my graphical user interface so that there is less repetition between
+the classes HomeTab, DirectoryTab and WarehouseTab.
