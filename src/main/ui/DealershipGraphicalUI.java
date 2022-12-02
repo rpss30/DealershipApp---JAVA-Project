@@ -1,9 +1,7 @@
 package ui;
 
 import model.Dealership;
-import model.EventLog;
 import persistence.JsonReader;
-import persistence.JsonWriter;
 import ui.panels.DirectoryTab;
 import ui.panels.WarehouseTab;
 import ui.panels.HomeTab;
@@ -15,6 +13,7 @@ import java.io.IOException;
 public class DealershipGraphicalUI extends JFrame {
     private static int WIDTH = 500;
     private static int HEIGHT = 500;
+    private String brand;
     private HomeTab homeTab;
     private WarehouseTab warehouse;
     private DirectoryTab directory;
@@ -34,16 +33,20 @@ public class DealershipGraphicalUI extends JFrame {
         setSize(WIDTH, HEIGHT);
         setTitle("DealershipApp");
         loadFilePrompt();
-        warehouse = new WarehouseTab(dealership);
-        directory = new DirectoryTab(dealership, warehouse);
-        homeTab = new HomeTab(dealership, this, directory, warehouse);
-        createTabbedPane();
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent e) {
-                homeTab.quitOptionsDialog();
-            }
-        });
-        setVisible(true);
+        if (brand == null) {
+            this.dispose();
+        } else {
+            warehouse = new WarehouseTab(dealership);
+            directory = new DirectoryTab(dealership, warehouse);
+            homeTab = new HomeTab(dealership, this, directory, warehouse);
+            createTabbedPane();
+            addWindowListener(new java.awt.event.WindowAdapter() {
+                public void windowClosing(java.awt.event.WindowEvent e) {
+                    homeTab.quitOptionsDialog();
+                }
+            });
+            setVisible(true);
+        }
     }
 
     // EFFECTS: creates and adds a tabbed pane at the top of the frame with panels
@@ -90,7 +93,7 @@ public class DealershipGraphicalUI extends JFrame {
     //              if entered input is not alphabetical, then displays error message and asks input again
     //              else, instantiates a new dealership with the given brand name
     private void chooseBrand() {
-        String brand = JOptionPane.showInputDialog("Please select a brand for your dealership");
+        brand = JOptionPane.showInputDialog("Please select a brand for your dealership");
         if (brand == null) {
             this.dispose();
         } else {
@@ -107,5 +110,4 @@ public class DealershipGraphicalUI extends JFrame {
                     "Welcome", JOptionPane.PLAIN_MESSAGE);
         }
     }
-
 }

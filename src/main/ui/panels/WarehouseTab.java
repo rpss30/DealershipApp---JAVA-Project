@@ -31,12 +31,16 @@ public class WarehouseTab extends JPanel {
     // EFFECTS: add an image icon for each car corresponding to the fuel type of the car to a list
     public void addIcons() {
         for (Car car : dealership.unsoldCars()) {
-            if (car.getFuelType().equals("Petrol")) {
-                icons.add(new ImageIcon("./data/resized_petrol_car.png"));
-            } else if (car.getFuelType().equals("Diesel")) {
-                icons.add(new ImageIcon("./data/resized_diesel_car.png"));
-            } else if (car.getFuelType().equals("Electric")) {
-                icons.add(new ImageIcon("./data/resized_electric_car.png"));
+            switch (car.getFuelType()) {
+                case "Petrol":
+                    icons.add(new ImageIcon("./data/resized_petrol_car.png"));
+                    break;
+                case "Diesel":
+                    icons.add(new ImageIcon("./data/resized_diesel_car.png"));
+                    break;
+                case "Electric":
+                    icons.add(new ImageIcon("./data/resized_electric_car.png"));
+                    break;
             }
         }
     }

@@ -87,3 +87,5 @@ one instance of Dealership, using this design pattern would ensure that only one
 across the application.
 - I would create a super class for all the tabs in my graphical user interface so that there is less repetition between
 the classes HomeTab, DirectoryTab and WarehouseTab.
+- I would move some methods and fields from the HomeTab class into a new class to adhere to the Single Responsibilty 
+Principle and thus improve cohesion.
