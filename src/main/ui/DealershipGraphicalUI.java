@@ -76,6 +76,7 @@ public class DealershipGraphicalUI extends JFrame {
                 JOptionPane.showMessageDialog(this,
                         "Welcome back to your dealership!",
                         "Welcome", JOptionPane.PLAIN_MESSAGE);
+                this.brand = dealership.getBrand();
             } catch (IOException e) {
                 JOptionPane.showMessageDialog(this,
                         "Could not load file",
